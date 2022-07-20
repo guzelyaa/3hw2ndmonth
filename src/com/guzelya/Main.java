@@ -8,12 +8,14 @@ public class Main {
 
         while (true){
             try {
-                bankAccount.withDraw(6000);
+                bankAccount.withDraw(6000.0);
             } catch (LimitException e) {
                 System.out.println(e.getMessage());
-                LimitException.setRemainingAmount(0.0);
-                bankAccount.setAmount(0.0);
-
+                try {
+                    bankAccount.withDraw(LimitException.getRemainingAmount());
+                    LimitException.setRemainingAmount(0.0);
+                } catch (LimitException limitException) {
+                }
                 break;
             }
         }

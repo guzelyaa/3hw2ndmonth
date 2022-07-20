@@ -19,7 +19,7 @@ public class BankAccount {
         amount = amount + sum;
     }
 
-    public void withDraw(int sum) throws LimitException {
+    public void withDraw(double sum) throws LimitException {
         if (sum > amount){
             throw new LimitException("Your sum is greater than your amount. Amount: " + getAmount(),amount);
         } else{
